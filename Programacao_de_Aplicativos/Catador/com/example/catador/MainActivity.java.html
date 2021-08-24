@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.catador</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.Nullable</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.core.app.ActivityCompat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.core.content.ContextCompat</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.Manifest</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.pm.PackageManager</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.database.Cursor</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.graphics.Bitmap</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.graphics.BitmapFactory</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.net.Uri</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.provider.MediaStore</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s1">ImageView iv</span><span class="s0">;</span>
+    <span class="s1">@Override</span>
+
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+        <span class="s1">iv = (ImageView) findViewById(R.id.foto)</span><span class="s0">;</span>
+
+        <span class="s0">if</span><span class="s1">(ContextCompat.checkSelfPermission(</span><span class="s0">this, </span><span class="s1">Manifest.permission.READ_EXTERNAL_STORAGE)</span>
+        <span class="s1">!= PackageManager.PERMISSION_GRANTED ||</span>
+        <span class="s1">ActivityCompat.checkSelfPermission(</span><span class="s0">this, </span><span class="s1">Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){</span>
+           <span class="s1">ActivityCompat.requestPermissions(</span><span class="s0">this, new </span><span class="s1">String[]{</span>
+               <span class="s1">Manifest.permission.READ_EXTERNAL_STORAGE</span><span class="s0">,</span>
+                   <span class="s1">Manifest.permission.CAMERA}</span><span class="s0">, </span><span class="s2">0</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">podePá(View view){</span>
+        <span class="s1">Intent i = </span><span class="s0">new </span><span class="s1">Intent(Intent.ACTION_PICK</span><span class="s0">,</span>
+                <span class="s1">MediaStore.Images.Media.EXTERNAL_CONTENT_URI)</span><span class="s0">;</span>
+        <span class="s1">startActivityForResult(i</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">tiraFoto(View view){</span>
+        <span class="s1">Intent i = </span><span class="s0">new </span><span class="s1">Intent(MediaStore.ACTION_IMAGE_CAPTURE)</span><span class="s0">;</span>
+        <span class="s1">startActivityForResult(i</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onActivityResult(</span><span class="s0">int </span><span class="s1">requestCode</span><span class="s0">, int </span><span class="s1">resultCode</span><span class="s0">, </span><span class="s1">@Nullable Intent data) {</span>
+        <span class="s0">super</span><span class="s1">.onActivityResult(requestCode</span><span class="s0">, </span><span class="s1">resultCode</span><span class="s0">, </span><span class="s1">data)</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(requestCode == </span><span class="s2">1 </span><span class="s1">&amp;&amp; resultCode == RESULT_OK){</span>
+            <span class="s1">Uri itemSelecionado = data.getData()</span><span class="s0">;</span>
+            <span class="s1">String[] caminhoItem = {MediaStore.Images.Media.DATA}</span><span class="s0">;</span>
+            <span class="s1">Cursor c = getContentResolver().query(itemSelecionado</span><span class="s0">, </span><span class="s1">caminhoItem</span><span class="s0">, null, null, null</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">c.moveToFirst()</span><span class="s0">;</span>
+            <span class="s0">int </span><span class="s1">coluna = c.getColumnIndex(caminhoItem[</span><span class="s2">0</span><span class="s1">])</span><span class="s0">;</span>
+            <span class="s1">String caminho = c.getString(coluna)</span><span class="s0">;</span>
+            <span class="s1">c.close()</span><span class="s0">;</span>
+            <span class="s1">Bitmap imagem = (BitmapFactory.decodeFile(caminho))</span><span class="s0">;</span>
+            <span class="s1">iv.setImageBitmap(imagem)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">if </span><span class="s1">(requestCode == </span><span class="s2">2 </span><span class="s1">&amp;&amp; resultCode == RESULT_OK) {</span>
+            <span class="s1">Bundle extras = data.getExtras()</span><span class="s0">;</span>
+            <span class="s1">Bitmap imagem = (Bitmap) extras.get(</span><span class="s3">&quot;data&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">iv.setImageBitmap(imagem)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
