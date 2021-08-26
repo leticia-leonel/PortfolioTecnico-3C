@@ -1,12 +1,10 @@
 # PortfolioTecnico-3C
 ## Códigos Portfólio
-* [Acesso Banco de Dados - Jorge Sapatos] (https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Banco_de_Dados/JorgeSapatos)
-* [Acesso Desenvolvimento de Sistemas - Cassino] (https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Desenvolvimento_de_Sistemas/Cassino)
-* [Acesso Programação de Aplicativos - Catador] (https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Programacao_de_Aplicativos/Catador)
+* Acesso Banco de Dados - Jorge Sapatos = https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Banco_de_Dados/JorgeSapatos
+* Acesso Desenvolvimento de Sistemas - Cassino = https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Desenvolvimento_de_Sistemas/Cassino
+* Acesso Programação de Aplicativos - Catador = https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Programacao_de_Aplicativos/Catador
 
-
-
-Estou criando um currículo!
+## Estou criando um currículo!
 
 ### Meu nome é **Letícia Colasso Leonel** :blush:
 
