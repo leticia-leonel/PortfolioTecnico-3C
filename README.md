@@ -1,8 +1,8 @@
 # PortfolioTecnico-3C
 ## Códigos Portfólio
-* [Acesso Banco de Dados - Jorge Sapatos] (Banco_de_Dados/)
-* [Acesso Desenvolvimento de Sistemas - Cassino] (Desenvolvimento_de_Sistemas/)
-* [Acesso Programação de Aplicativos - Catador] (Programacao_de_Aplicativos/)
+* [Acesso Banco de Dados - Jorge Sapatos] (https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Banco_de_Dados/JorgeSapatos)
+* [Acesso Desenvolvimento de Sistemas - Cassino] (https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Desenvolvimento_de_Sistemas/Cassino)
+* [Acesso Programação de Aplicativos - Catador] (https://github.com/leticia-leonel/PortfolioTecnico-3C/tree/main/Programacao_de_Aplicativos/Catador)
 
 
 
